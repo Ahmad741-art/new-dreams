@@ -1,0 +1,25 @@
+class Dream:
+    def __init__(self, title, description, importance, target_date):
+        self.title = title
+        self.description = description
+        self.importance = importance
+        self.target_date = target_date
+        self.goals = []
+
+    def add_goal(self, goal):
+        self.goals.append(goal)
+
+    def progress(self):
+        completed = sum(1 for goal in self.goals if goal.status == "Completed")
+        return (completed / len(self.goals)) * 100 if self.goals else 0
+
+
+class Goal:
+    def __init__(self, title, due_date, priority):
+        self.title = title
+        self.due_date = due_date
+        self.priority = priority
+        self.status = "Not Started"
+
+    def mark_completed(self):
+        self.status = "Completed"
